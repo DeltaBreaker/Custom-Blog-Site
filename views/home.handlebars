@@ -1,1 +1,14 @@
-<h1>Test</h1>
+<h1 class="text-center mt-5">Posts</h1>
+<posts-container class="d-flex flex-column align-items-center">
+    {{#if display}}
+        {{#each posts as |post|}}
+        <post class="d-flex flex-column align-items-center w-50 border border-primary rounded border-3 pt-2 mb-3">
+            <h3>{{post.title}}</h3>
+            <p class="mt-2">{{post.content}}</p>
+            <h5>By: {{post.user.username}}</h5>
+        </post>
+        {{/each}}
+    {{else}}
+        <h2 class="text-center mt-5">There are no posts</h2>
+    {{/if}}
+</posts-container>

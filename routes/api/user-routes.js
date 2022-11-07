@@ -22,8 +22,7 @@ router.post("/", async (req, res) => {
 
 router.get("/logout", async (req, res) => {
     try {
-        req.session.save(() => {
-            req.session.loggedIn = false;
+        req.session.destroy(() => {
             res.status(200).json({ success: true });
         });
     } catch (err) {
@@ -40,7 +39,7 @@ router.post("/login", async (req, res) => {
             }
         })
 
-        if(!userData) {
+        if (!userData) {
             res.status(404).json({ success: false });
             return;
         }
@@ -50,7 +49,7 @@ router.post("/login", async (req, res) => {
             userData.password
         );
 
-        if(!validPassword) {
+        if (!validPassword) {
             res.status(200).json({ success: false });
             return;
         }
