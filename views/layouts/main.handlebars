@@ -19,9 +19,11 @@
                     <li class="nav-item">
                         <a class="nav-link" href="/">Home</a>
                     </li>
+                    {{#if loggedIn}}
                     <li class="nav-item">
                         <a class="nav-link" href="#">Dashboard</a>
                     </li>
+                    {{/if}}
                     {{> log-option}}
                 </ul>
             </div>

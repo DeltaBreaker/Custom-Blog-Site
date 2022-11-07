@@ -1,0 +1,24 @@
+<posts-container class="d-flex flex-column align-items-center">
+    <post class="d-flex flex-column align-items-center w-50 border border-primary rounded border-3 pt-2 mb-3 shadow">
+        <h3>{{post.title}}</h3>
+        <p class="mt-2">{{post.content}}</p>
+        <h5>By: {{post.user.username}}</h5>
+        {{#if commented}}
+        <comments class="d-flex flex-column w-100 align-items-center">
+            {{#each post.comments as |user-comment|}}
+            {{> comment}}
+            {{/each}}
+        </comments>
+        {{/if}}
+    </post>
+    {{#if loggedIn}}
+    <comment-form class="d-flex flex-column align-items-center w-50">
+        <div class="input-group mb-3">
+            <span class="input-group-text">Comment</span>
+            <textarea class="form-control" aria-label="With textarea" id="comment-input"></textarea>
+        </div>
+        <button type="button" class="btn btn-primary w-25 mb-3" id="button-comment">Submit</button>
+    </comment-form>
+    {{/if}}
+</posts-container>
+<script src="/js/post.js"></script>
