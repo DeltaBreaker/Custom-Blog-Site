@@ -4,6 +4,7 @@ const { Model } = require("sequelize");
 const { User, Post, Comment } = require("../../sql/models");
 const auth = require("../../utils/auth.js");
 
+// This handles creating a new post and putting it into the database
 router.post("/", async (req, res) => {
   try {
     if (!req.session.loggedIn) {
@@ -28,6 +29,7 @@ router.post("/", async (req, res) => {
   }
 });
 
+// This handles deleting a specific post from the database
 router.delete("/:id", async (req, res) => {
   try {
     if (!req.session.loggedIn) {
@@ -54,6 +56,7 @@ router.delete("/:id", async (req, res) => {
   }
 });
 
+// This updates a specific post with given info
 router.put("/:id", async (req, res) => {
   try {
     if (!req.session.loggedIn) {
@@ -82,6 +85,7 @@ router.put("/:id", async (req, res) => {
 
 //----- Routes for comments -----
 
+// This creates a comment at a specified post
 router.post("/:id", async (req, res) => {
   try {
     if (!req.session.loggedIn) {
@@ -117,6 +121,7 @@ router.post("/:id", async (req, res) => {
   }
 });
 
+// This updates a specified comment
 router.put("/comment/:id", async (req, res) => {
   try {
     if (!req.session.loggedIn) {
@@ -143,6 +148,7 @@ router.put("/comment/:id", async (req, res) => {
   }
 });
 
+// This deletes a specified comment
 router.delete("/comment/:id", async (req, res) => {
   try {
     if (!req.session.loggedIn) {

@@ -1,6 +1,8 @@
 const submit = document.getElementById("button-submit");
 const titleField = document.getElementById("title");
 const contentField = document.getElementById("content");
+
+// Handles sending a new request to create a new post
 submit.addEventListener("click", async (event) => {
   if (titleField.value.length == 0) {
     alert("Title cannot be empty");

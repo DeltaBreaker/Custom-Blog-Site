@@ -2,6 +2,7 @@ const router = require("express").Router();
 const { User, Post, Comment } = require("../sql/models");
 const auth = require("../utils/auth.js");
 
+// Used to create a new post
 router.get("/new", auth, (req, res) => {
   try {
     res.render("newpost", {
@@ -13,8 +14,10 @@ router.get("/new", auth, (req, res) => {
   }
 });
 
+// Deliver a page to see a specific post
 router.get("/:id", async (req, res) => {
   try {
+    // Get the post data with all comments
     let blogData = await Post.findByPk(req.params.id, {
       include: [
         {
@@ -32,7 +35,6 @@ router.get("/:id", async (req, res) => {
         },
       ],
     });
-
     let post = blogData.get({ plain: true });
 
     res.render("post", {

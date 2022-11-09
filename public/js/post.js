@@ -5,6 +5,7 @@ const commentButton = document.getElementById("button-comment");
 const titleField = document.getElementById("title");
 const contentField = document.getElementById("content");
 
+// Sends a request to post a comment to the current post
 if (commentButton) {
   commentButton.addEventListener("click", async (event) => {
     if (input.value.length > 0) {
@@ -34,6 +35,7 @@ if (commentButton) {
   });
 }
 
+// Sends a request to update a post
 editButton.addEventListener("click", async (event) => {
   let location = window.location.toString().split("/");
   let response = await fetch("/api/post/" + location[location.length - 1], {
@@ -53,6 +55,7 @@ editButton.addEventListener("click", async (event) => {
   alert("Post updated");
 });
 
+// Sends a request to delete a post
 deleteButton.addEventListener("click", async (event) => {
   let location = window.location.toString().split("/");
   let response = await fetch("/api/post/" + location[location.length - 1], {

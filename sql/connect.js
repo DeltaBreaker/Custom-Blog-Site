@@ -1,6 +1,7 @@
 const Sequelize = require("sequelize");
 require("dotenv").config();
 
+// Check for a jawsdb url and use that if it exists
 const sequelize = process.env.JAWSDB_URL
   ? new Sequelize(process.env.JAWSDB_URL)
   : new Sequelize(

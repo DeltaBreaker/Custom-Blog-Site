@@ -10,6 +10,7 @@ const sequelize = require("./sql/connect.js");
 const app = express();
 const PORT = process.env.PORT || 3001;
 
+// Configure session storage and cookies
 app.use(
   session({
     secret: "secret",
@@ -22,7 +23,7 @@ app.use(
   })
 );
 
-// Add helper function file below if needed
+// Create and use template engine
 const hbs = exphbs.create({});
 app.engine("handlebars", hbs.engine);
 app.set("view engine", "handlebars");
