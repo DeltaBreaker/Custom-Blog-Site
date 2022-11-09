@@ -1,10 +1,17 @@
 <posts-container class="d-flex flex-column align-items-center">
     <post class="d-flex flex-column align-items-center w-50 border border-primary rounded border-3 pt-2 mb-3 shadow">
+        {{#if isAuthor}}
+        <input type="text" class="form-control w-75 mb-3 text-center" value="{{post.title}}" id="title">
+        <input type=" text" class="form-control w-75 mb-3 text-center" value="{{post.content}}" id="content">
+        {{else}}
         <h3>{{post.title}}</h3>
-        <p class="mt-2">{{post.content}}</p>
+        <p class=" mt-2">{{post.content}}</p>
+        {{/if}}
         <h5>By: {{post.user.username}}</h5>
+        <h6>Posted: {{post.date}}</h6>
         {{#if commented}}
         <comments class="d-flex flex-column w-100 align-items-center">
+            <h3>Comments:</h3>
             {{#each post.comments as |user-comment|}}
             {{> comment}}
             {{/each}}
@@ -19,6 +26,10 @@
         </div>
         <button type="button" class="btn btn-primary w-25 mb-3" id="button-comment">Submit</button>
     </comment-form>
+    {{/if}}
+    {{#if isAuthor}}
+    <button type="button" class="btn btn-primary w-50 mb-3 mt-5" id="button-edit">Submit Changes</button>
+    <button type="button" class="btn btn-primary w-50 mb-3" id="button-delete">Delete</button>
     {{/if}}
 </posts-container>
 <script src="/js/post.js"></script>

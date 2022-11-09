@@ -12,11 +12,12 @@ router.post("/", async (req, res) => {
     const userData = req.body;
     userData.password = await bcrypt.hash(req.body.password, 10);
 
-    await User.create(userData);
+    let user = await User.create(userData);
 
     req.session.save(() => {
       req.session.loggedIn = true;
       req.session.username = req.body.username;
+      req.session.userId = user.dataValues.id;
       res.status(200).json({ success: true });
     });
   } catch (err) {
@@ -67,6 +68,7 @@ router.post("/login", async (req, res) => {
     req.session.save(() => {
       req.session.loggedIn = true;
       req.session.username = req.body.username;
+      req.session.userId = userData.dataValues.id;
       res.status(200).json({ success: true });
     });
   } catch (err) {

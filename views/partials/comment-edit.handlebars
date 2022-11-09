@@ -1,0 +1,6 @@
+<post class="d-flex flex-column align-items-center w-50 border border-primary rounded border-3 pt-2 mb-3 shadow">
+    <h6 class="mt-2">{{post.title}}</h6>
+    <input type="text" class="form-control w-75 mb-3 text-center" value="{{comment}}" id="comment-{{id}}">
+    <button type="button" class="btn btn-primary w-50 mb-3 mt-1 edit-comment" data-id="{{id}}">Submit Changes</button>
+    <button type="button" class="btn btn-primary w-50 mb-3 delete-comment" data-id="{{id}}">Delete</button>
+</post>

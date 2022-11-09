@@ -1,0 +1,24 @@
+<main-container class="d-flex flex-column align-items-center">
+    <h1 class="text-center mt-5">Posts</h1>
+    <posts-container class="d-flex flex-column align-items-center w-100">
+        {{#if displayPosts}}
+        {{#each posts as |post|}}
+        {{> blogpost post}}
+        {{/each}}
+        {{else}}
+        <h2 class="text-center mt-5">There are no posts</h2>
+        {{/if}}
+    </posts-container>
+    <button type="button" class="btn btn-primary w-50 mb-3 mt-5" id="new-post">New Post</button>
+    <h1 class="text-center mt-5">Comments</h1>
+    <comments-container class="d-flex flex-column align-items-center w-100">
+        {{#if displayComments}}
+        {{#each comments as |comment|}}
+        {{> comment-edit}}
+        {{/each}}
+        {{else}}
+        <h2 class="text-center mt-5">There are no comments</h2>
+        {{/if}}
+    </comments-container>
+</main-container>
+<script src="/js/dash.js"></script>

@@ -1,10 +1,10 @@
 <h1 class="text-center mt-5">Posts</h1>
 <posts-container class="d-flex flex-column align-items-center">
-    {{#if display}}
-        {{#each posts as |post|}}
-        {{> blogpost post}}
-        {{/each}}
+    {{#if displayPosts}}
+    {{#each posts as |post|}}
+    {{> blogpost post}}
+    {{/each}}
     {{else}}
-        <h2 class="text-center mt-5">There are no posts</h2>
+    <h2 class="text-center mt-5">There are no posts</h2>
     {{/if}}
 </posts-container>
